@@ -23,10 +23,10 @@ def saveDetails():
         print(data)
         name = data["name"]
         email = data["email"]
-        address = data["address"]
+        book = data["book"]
         with sqlite3.connect("employee.db") as con:
             cur = con.cursor()
-            cur.execute("INSERT into Employees (name, email, address) values (?,?,?)", (name, email, address))
+            cur.execute("INSERT into Employees (name, email, book) values (?,?,?)", (name, email, book))
             con.commit()
             msg = "Employee successfully Added"
     except:
@@ -57,11 +57,11 @@ def updaterecord():
         id = data["id"]
         name = data["name"]
         email = data["email"]
-        address = data["address"]
+        book = data["book"]
 
         with sqlite3.connect("employee.db") as con:
             cur = con.cursor()
-            cur.execute("UPDATE Employees SET name=?, email=?, address=? WHERE id=?", (name, email, address, id))
+            cur.execute("UPDATE Employees SET name=?, email=?, book=? WHERE id=?", (name, email, book, id))
             con.commit()
             msg = "Employee successfully Updated"
     except:
